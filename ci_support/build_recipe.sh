@@ -8,11 +8,14 @@ bash "${MYDIR}/../tests/future_import_tests.sh"
 
 if [ ! -z ${TRAVIS} ];then
     source ci_support/setup_conda.sh
+
+    conda install conda=4.7 conda-build=3.17.8 -c defaults --yes
 fi
 
 if [ ! -z ${CIRCLECI} ];then
     . $HOME/miniconda/etc/profile.d/conda.sh
     conda activate eman-deps-18.0
+    conda install conda=4.7 conda-build=3.17.8 -c defaults --yes
 fi
 
 python -m compileall -q .
