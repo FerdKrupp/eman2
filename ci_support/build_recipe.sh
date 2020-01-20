@@ -26,7 +26,7 @@ fi
 conda info -a
 conda list
 conda list --explicit
-conda render recipes/eman -m $1
+conda render recipes/eman
 conda build purge-all
 
 if [ $AGENT_OS_NAME == "win" ];then
