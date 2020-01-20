@@ -24,7 +24,7 @@ if proc==0 :
 	print("Stage 1, synchronous send/receive")
 	print("Rank ", end=' ')
 	for i in range(1,nproc):
-		mpi_eman2_send("DATA",a,i)
+		mpi_eman2_send("DATA".encode(),a,i)
 		com,data,src=mpi_eman2_recv(i)
 #		a.write_image("test_mpi_1.hdf",i)
 		print(i, end=' ')
