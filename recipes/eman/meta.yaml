@@ -14,7 +14,8 @@ requirements:
     host:
         - python    3.6.*
         - boost     1.66.*
-        - fftw-mpi
+        - pydusa 1.15   openmpi{{ openmpi }}_12  # [not win]
+        - fftw   3.3.8  nompi_*                  # [win]
         - numpy     1.13.*
         - ftgl
         - freetype
@@ -28,7 +29,6 @@ requirements:
     
 test:
   requires:
-    - openmpi                             # [not win]
     - eman-deps     18.0.*
     - boost         1.66.*
   
