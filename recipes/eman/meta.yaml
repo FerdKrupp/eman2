@@ -12,24 +12,13 @@ requirements:
         - {{ cdt('mesa-libgl-devel') }}   # [linux]
 
     host:
-        - python    3.6.*
         - boost     1.66.*
-        - pydusa 1.15   openmpi3_14  # [not win]
-        - fftw   3.3.8  nompi_*                  # [win]
-        - numpy     1.13.*
-        - ftgl
-        - freetype
-        - gsl
-        - hdf5      1.8.18
-        - jpeg
-        - libtiff   4.0.9
-        - libpng    1.6.36
-        - zlib
+        - eman-deps-cxx   18.0.*
         - libglu                          # [linux]
     
 test:
   requires:
-    - eman-deps     18.0.* openmpi3_1
+    - eman-deps     18.0.*
     - boost         1.66.*
   
   source_files:
