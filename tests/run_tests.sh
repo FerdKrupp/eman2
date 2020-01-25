@@ -29,8 +29,9 @@ nosetests -vv --exe -m "^test_*" \
                     rt/pyem/
 
 # 5. Test openmpi
-if [ $(whoami) != "root" ] && [ "$(uname -s)" != "Darwin" ];then
-    mpirun -n 4 $(which python) ${MYDIR}/../examples/mpi_test.py
+if [ $(whoami) != "root" ];then
+    export TMPDIR=/tmp
+    mpirun --oversubscribe -n 4 $(which python) ${MYDIR}/../examples/mpi_test.py
 fi
 
 # 6. Run e2*.py -h
