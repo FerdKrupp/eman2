@@ -6,13 +6,13 @@ MYDIR="$(cd "$(dirname "$0")"; pwd -P)"
 
 bash "${MYDIR}/../tests/future_import_tests.sh"
 
-if [ ! -z ${TRAVIS} ];then
+if [ -n "${TRAVIS}" ];then
     source ci_support/setup_conda.sh
 
     conda install conda conda-build -c defaults --yes
 fi
 
-if [ ! -z ${CIRCLECI} ];then
+if [ -n "${CIRCLECI}" ];then
     . $HOME/miniconda/etc/profile.d/conda.sh
     conda activate eman-deps-18.0
     conda install conda conda-build -c defaults --yes
@@ -20,7 +20,7 @@ fi
 
 python -m compileall -q .
 
-if [ ! -z "$JENKINS_HOME" ];then
+if [ -n "$JENKINS_HOME" ];then
     export CPU_COUNT=4
 else
     export CPU_COUNT=2
