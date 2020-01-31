@@ -20,7 +20,7 @@ install:
 
     - conda.exe config --set show_channel_urls true
 
-    - conda.exe install conda=4.7 conda-build=3.18 --yes --quiet
+    - conda.exe install conda conda-build -c defaults --yes
 
     - conda.exe info -a
     - conda.exe config --get
