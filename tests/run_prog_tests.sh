@@ -5,7 +5,7 @@
 set -e
 
 MYDIR="$(cd "$(dirname "$0")"; pwd -P)"
-PROGS_DIR="${PREFIX:-${CONDA_PREFIX}}/bin"
+PROGS_DIR="${PREFIX:-CONDA_PREFIX}/bin"
 
 progs=$(find "${PROGS_DIR}" -name 'e2*.py' -print0 | while read -d '' prog; do basename "$prog"; done)
 progs_exclude=$(cat "${MYDIR}"/programs_no_test.txt | awk '{print $1}')
