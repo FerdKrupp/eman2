@@ -16,8 +16,7 @@ cmake --version
 if [[ ${HOST} =~ .*linux.* ]]; then
     cmake $SRC_DIR -DCMAKE_TOOLCHAIN_FILE="${RECIPE_DIR}/cross-linux.cmake" -DENABLE_OPTIMIZE_MACHINE=ON
 else
-    export CONDA_BUILD_SYSROOT=/Users/shadow_walker/workspace/SDKs/MacOSX10.9.sdk
-    cmake $SRC_DIR -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}
+    cmake $SRC_DIR
 fi
 
 make -j${CPU_COUNT}
