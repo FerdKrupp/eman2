@@ -9,7 +9,8 @@ bash "${MYDIR}/../tests/future_import_tests.sh"
 if [ ! -z ${TRAVIS} ];then
     source ci_support/setup_conda.sh
 
-    conda install eman-deps=18.0 boost=1.66 -c cryoem -c defaults -c conda-forge --yes --quiet
+    conda create -n eman-deps-18.0 eman-deps=18.0 boost=1.66 -c cryoem -c defaults -c conda-forge --yes --quiet
+    conda activate eman-deps-18.0
 fi
 
 if [ ! -z ${CIRCLECI} ];then
