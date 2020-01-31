@@ -9,7 +9,7 @@ bash "${MYDIR}/../tests/future_import_tests.sh"
 if [ -n "${TRAVIS}" ];then
     source ci_support/setup_conda.sh
 
-    conda create -n eman-deps-18.0 eman-deps=18.0 boost=1.66 -c cryoem -c defaults -c conda-forge --yes --quiet
+    conda create -n eman-deps-18.0 eman-deps=18.0 boost=1.66 cmake=3.14 -c cryoem -c defaults -c conda-forge --yes --quiet
     conda activate eman-deps-18.0
 fi
 
