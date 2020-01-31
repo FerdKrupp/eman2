@@ -6,17 +6,17 @@ add_custom_target(test-verbose
 		)
 
 add_test(NAME imports
-		 COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/test_imports.py
+		 COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/test_imports.py
 		 )
 
 add_test(NAME test-EMAN2DIR
-		 COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/test_EMAN2DIR.py
+		 COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/test_EMAN2DIR.py
 		 )
 
 if(NOT WIN32)
 	add_test(NAME nose-tests
 			COMMAND ${NOSETESTS_EXECUTABLE} -vv --exe -m "^test_*" -e "^test_image_" -e "test_main" -e "test_result" -e "test_boxing" -a \!broken
-					${CMAKE_SOURCE_DIR}/rt/pyem/ 
+					${CMAKE_BINARY_DIR}/rt/pyem/ 
 			)
 else()
 	set(test_methods-win
@@ -29,7 +29,7 @@ else()
 	foreach(t ${test_methods-win})
 		add_test(NAME ${t}
 				COMMAND ${NOSETESTS_EXECUTABLE} -v -m "^test_*" -a \!broken
-						${CMAKE_SOURCE_DIR}/rt/pyem/${t}
+						${CMAKE_BINARY_DIR}/rt/pyem/${t}
 				)
 	endforeach()
 endif()
@@ -40,7 +40,7 @@ add_custom_target(test-rt
 		)
 
 add_custom_target(test-verbose-broken
-		COMMAND ${NOSETESTS_EXECUTABLE} -v -m "^test_*" -a broken ${CMAKE_SOURCE_DIR}/rt/pyem/*
+		COMMAND ${NOSETESTS_EXECUTABLE} -v -m "^test_*" -a broken ${CMAKE_BINARY_DIR}/rt/pyem/*
 		)
 
 if(NOT WIN32)
@@ -50,12 +50,12 @@ if(NOT WIN32)
 					  )
 	
 	add_test(NAME progs
-			 COMMAND bash ${CMAKE_SOURCE_DIR}/tests/run_prog_tests.sh
+			 COMMAND bash ${CMAKE_BINARY_DIR}/tests/run_prog_tests.sh
 			 )
 endif()
 
 add_test(NAME py-compile
-		COMMAND ${PYTHON_EXECUTABLE} -m compileall -q ${CMAKE_SOURCE_DIR}
+		COMMAND ${PYTHON_EXECUTABLE} -m compileall -q ${CMAKE_BINARY_DIR}
 		)
 
 add_custom_target(test-py-compile
